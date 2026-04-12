@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "homepage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutText": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "productsPageTitle": {
+      "type": "string"
+    },
+    "productsPageDescription": {
+      "type": "text"
+    }
+  }
+}

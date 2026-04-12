@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "projects"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "techStack": {
+      "type": "text"
+    },
+    "githubUrl": {
+      "type": "string"
+    },
+    "liveUrl": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "sortOrder": {
+      "type": "integer"
+    }
+  }
+}
