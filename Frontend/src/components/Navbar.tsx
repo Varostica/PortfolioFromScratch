@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
-import { Home, User, FolderOpen, Image as ImageIcon, FileText, Mail } from 'lucide-react'
+import { Home, User, FolderOpen, Image as ImageIcon, FileText, Mail, ShoppingBag } from 'lucide-react'
 
 const NAV_ITEMS = [
   { to: '/', label: 'Home', icon: Home },
   { to: '/about', label: 'About', icon: User },
   { to: '/projects', label: 'Projects', icon: FolderOpen },
   { to: '/artgallery', label: 'Art', icon: ImageIcon },
+  { to: '/products', label: 'Products', icon: ShoppingBag },
   { to: '/resume', label: 'Resume', icon: FileText },
   { to: '/contact', label: 'Contact', icon: Mail },
 ]
