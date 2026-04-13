@@ -55,16 +55,19 @@ Make sure you have installed:
 - npm
 - Python (required by Strapi if using SQLite)
 
-1. Clone the repository
+1. **Clone the repository**
 
 git clone [<YOUR_REPOSITORY_URL>](https://github.com/Varostica/PortfolioFromScratch)
+
 cd PortfolioFromScratch
 
-2. Install and run the backend
+2. **Install and run the backend**
 
+```bash
 cd backend/cms
 npm install
 npm run develop
+```
 
 This will start the Strapi admin panel locally.
 
@@ -73,28 +76,32 @@ Default local URL:
 http://localhost:1337/admin
 
 
-3. Install and run the frontend
+3. **Install and run the frontend**
 
 Open a second terminal:
 
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Default local URL:
 
 http://localhost:5173
 
 
-4. Frontend environment variables
+4. **Frontend environment variables**
 
 Create a .env file inside the frontend folder with:
 
+```bash
 VITE_STRAPI_API_URL=http://localhost:1337/api
 VITE_FAKESTORE_API_URL=https://fakestoreapi.com
+```
 
 
-5. Strapi setup
+5. **Strapi setup**
 
 Inside Strapi, create and publish the required content entries.
 
@@ -106,12 +113,13 @@ findOne
 This is required so the React application can read the content without authentication.
 
 
-6. Run tests
+6. **Run tests**
 
 From the frontend folder:
 
+```bash
 npm run test
-
+```
 
 ## Technical Decisions
 
@@ -136,9 +144,9 @@ API calls were organized into dedicated service files to separate data access fr
 
 A shared API client was used to centralize request logic and support clear handling of:
 
-4xx errors
-5xx errors
-network errors
+- 4xx errors
+- 5xx errors
+- network errors
 
 This approach keeps the UI simpler and avoids repeating error-handling logic across components.
 
