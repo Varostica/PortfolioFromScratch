@@ -18,7 +18,7 @@ export default function ArtGalleryPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner size="lg" label="Cargando…" />
+        <Spinner size="lg" label="Loading…" />
       </div>
     )
   }
@@ -27,14 +27,14 @@ export default function ArtGalleryPage() {
     <section className="min-h-screen pt-36 pb-12">
       <div className="mx-auto max-w-7xl px-6">
         <h1 className="mb-2 text-center text-3xl font-bold">
-          Mi Galería de <span className="text-brand-500">Arte</span>
+          My <span className="text-brand-500">Art</span> Gallery
         </h1>
         <p className="mb-10 text-center text-text-muted">
-          Aquí pueden ver algunas de las pinturas en acrílico que he hecho en mi tiempo libre.
+          Here are some of the acrylic paintings I've created in my free time.
         </p>
 
         {artworks.length === 0 ? (
-          <p className="text-center text-text-muted">No hay obras aún.</p>
+          <p className="text-center text-text-muted">No artworks yet — stay tuned!</p>
         ) : (
           <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
             {artworks.map((a) => (

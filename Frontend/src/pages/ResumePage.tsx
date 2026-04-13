@@ -17,7 +17,7 @@ export default function ResumePage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner size="lg" label="Cargando…" />
+        <Spinner size="lg" label="Loading…" />
       </div>
     )
   }
@@ -30,7 +30,7 @@ export default function ResumePage() {
     <section className="min-h-screen pt-28 pb-12">
       <div className="mx-auto max-w-4xl px-6">
         <h1 className="mb-6 text-center text-3xl font-bold">
-          {data?.sectionTitle ?? 'Currículum Vitae'}
+          {data?.sectionTitle ?? 'Resume'}
         </h1>
 
         {data?.shortResumeIntro && (
@@ -48,7 +48,7 @@ export default function ResumePage() {
                 font-semibold text-white no-underline shadow-lg shadow-brand-500/30
                 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
             >
-              ⬇ {data?.downloadButtonText ?? 'Descargar CV'}
+              ⬇ {data?.downloadButtonText ?? 'Download Resume'}
             </a>
           </div>
         )}
@@ -75,7 +75,7 @@ export default function ResumePage() {
                 font-semibold text-white no-underline shadow-lg shadow-brand-500/30
                 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
             >
-              ⬇ {data?.downloadButtonText ?? 'Descargar CV'}
+              ⬇ {data?.downloadButtonText ?? 'Download Resume'}
             </a>
           </div>
         )}

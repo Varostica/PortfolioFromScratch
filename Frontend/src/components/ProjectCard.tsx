@@ -13,8 +13,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const buttons = [
     { url: project.githubUrl, label: project.ghLabel ?? 'GitHub' },
     { url: project.liveUrl, label: project.demoLabel ?? 'Demo' },
-    { url: project.websiteUrl, label: project.websiteLabel ?? 'Página Web' },
-    { url: project.referenceUrl, label: project.referenceLabel ?? 'Referencias' },
+    { url: project.websiteUrl, label: project.websiteLabel ?? 'Website' },
+    { url: project.referenceUrl, label: project.referenceLabel ?? 'References' },
   ].filter((b) => !!b.url)
 
   return (

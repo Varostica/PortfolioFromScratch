@@ -20,7 +20,7 @@ export default function HomePage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner size="lg" label="Cargando…" />
+        <Spinner size="lg" label="Loading…" />
       </div>
     )
   }
@@ -43,18 +43,18 @@ export default function HomePage() {
             )}
 
             <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-              {data?.heroTitle ?? 'Hola!'}{' '}
+              {data?.heroTitle ?? 'Hey there!'}{' '}
               <span className="inline-block animate-wave origin-[70%_70%]">👋🏻</span>
             </h1>
 
             <h2 className="mt-2 text-3xl font-bold md:text-4xl">
               {data?.heroSubtitle ? (
                 <>
-                  Soy <span className="text-brand-500">{data.heroSubtitle}</span>
+                  I'm <span className="text-brand-500">{data.heroSubtitle}</span>
                 </>
               ) : (
                 <>
-                  Soy <span className="text-brand-500">VALENTINA ARÓSTICA</span>
+                  I'm <span className="text-brand-500">VALENTINA ARÓSTICA</span>
                 </>
               )}
             </h2>
@@ -63,11 +63,11 @@ export default function HomePage() {
               <Typewriter
                 options={{
                   strings: [
-                    'Ingeniera Civil Informática',
-                    'Desarrolladora de Software',
-                    'Desarrolladora FullStack',
-                    'Artista, curiosa y creativa',
-                    'Entusiasta UX',
+                    'Computer Science Engineer',
+                    'Software Developer',
+                    'Full-Stack Developer',
+                    'Artist, curious & creative',
+                    'UX Enthusiast',
                   ],
                   autoStart: true,
                   loop: true,
@@ -118,7 +118,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold md:text-4xl">
             {data?.introTitle ?? (
               <>
-                DEJA QUE ME <span className="text-brand-500">PRESENTE</span>
+                LET ME <span className="text-brand-500">INTRODUCE MYSELF</span>
               </>
             )}
           </h2>
@@ -138,7 +138,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold md:text-4xl">
               {data.websiteOverviewTitle ?? (
                 <>
-                  ¿Qué hay en este <span className="text-brand-500">SITIO WEB</span>?
+                  What's on this <span className="text-brand-500">WEBSITE</span>?
                 </>
               )}
             </h2>
@@ -155,9 +155,9 @@ export default function HomePage() {
       {data?.showSocialLinks !== false && (
         <section className="py-16">
           <div className="mx-auto max-w-7xl px-6 text-center">
-            <h2 className="text-2xl font-bold">ENCUÉNTRAME EN</h2>
+            <h2 className="text-2xl font-bold">FIND ME ON</h2>
             <p className="mt-2 text-text-muted">
-              Siéntete libre de <span className="text-brand-500">conectar</span> conmigo
+              Feel free to <span className="text-brand-500">connect</span> with me
             </p>
             <div className="mt-6 flex justify-center">
               <SocialLinks filter="hero" />

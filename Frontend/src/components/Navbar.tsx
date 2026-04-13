@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Inicio' },
-  { to: '/about', label: 'Sobre mí' },
-  { to: '/projects', label: 'Proyectos' },
-  { to: '/artgallery', label: 'Arte' },
-  { to: '/resume', label: 'CV' },
-  { to: '/contact', label: 'Contacto' },
+  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/artgallery', label: 'Art' },
+  { to: '/resume', label: 'Resume' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {

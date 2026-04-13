@@ -17,21 +17,21 @@ export default function ContactPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner size="lg" label="Cargando…" />
+        <Spinner size="lg" label="Loading…" />
       </div>
     )
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    alert(data?.successMessage ?? '¡Gracias por tu mensaje!')
+    alert(data?.successMessage ?? 'Thanks for reaching out!')
   }
 
   return (
     <section className="min-h-screen pt-36 pb-12">
       <div className="mx-auto max-w-5xl px-6">
         <h1 className="mb-2 text-center text-3xl font-bold">
-          {data?.sectionTitle ?? 'Contacto'}
+          {data?.sectionTitle ?? 'Get in Touch'}
         </h1>
 
         {data?.sectionDescription && (
@@ -47,7 +47,7 @@ export default function ContactPage() {
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-text">Nombre</label>
+                  <label className="mb-1 block text-sm font-medium text-text">Name</label>
                   <input
                     required
                     className="w-full rounded-lg border border-brand-200 px-4 py-2.5 text-sm
@@ -66,7 +66,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-text">Mensaje</label>
+                <label className="mb-1 block text-sm font-medium text-text">Message</label>
                 <textarea
                   rows={5}
                   required
@@ -81,7 +81,7 @@ export default function ContactPage() {
                   shadow-lg shadow-brand-500/30 transition-all
                   hover:-translate-y-0.5 hover:bg-brand-600"
               >
-                Enviar
+                Send
               </button>
             </form>
           )}
@@ -89,10 +89,10 @@ export default function ContactPage() {
           {/* Info card */}
           <div className="flex flex-col justify-center rounded-2xl bg-brand-50 p-8 md:col-span-2">
             <h3 className="mb-2 text-lg font-bold text-brand-800">
-              {data?.contactCardTitle ?? '¿Tomamos un café virtual?'}
+              {data?.contactCardTitle ?? 'Grab a virtual coffee? ☕'}
             </h3>
             <p className="text-sm text-text-muted">
-              {data?.contactCardText ?? 'Santiago, Chile · Disponible para colaboraciones ✨'}
+              {data?.contactCardText ?? 'Santiago, Chile · Open to collaborations ✨'}
             </p>
           </div>
         </div>

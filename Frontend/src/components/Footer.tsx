@@ -9,7 +9,7 @@ export default function Footer() {
     getSiteSettings()
       .then((s) =>
         setFooter({
-          text: s.footerText ?? 'Diseñado y desarrollado por Valentina Aróstica',
+          text: s.footerText ?? 'Designed & developed by Valentina Aróstica',
           year: new Date().getFullYear(),
         }),
       )

@@ -19,7 +19,7 @@ export default function AboutPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner size="lg" label="Cargando…" />
+        <Spinner size="lg" label="Loading…" />
       </div>
     )
   }
@@ -37,7 +37,7 @@ export default function AboutPage() {
             <h1 className="mb-6 text-3xl font-bold">
               {about?.sectionTitle ?? (
                 <>
-                  ¿Quién es{' '}
+                  Who is{' '}
                   <span className="text-brand-500">Varóstica</span>?
                 </>
               )}
@@ -82,7 +82,7 @@ export default function AboutPage() {
         {skills.length > 0 && (
           <div className="mt-20 animate-fade-in">
             <h2 className="mb-8 text-center text-2xl font-bold">
-              Habilidades <span className="text-brand-500">tecnológicas</span>
+              Technical <span className="text-brand-500">Skills</span>
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               {skills.map((s) => (
@@ -104,7 +104,7 @@ export default function AboutPage() {
         {tools.length > 0 && (
           <div className="mt-16 animate-fade-in">
             <h2 className="mb-8 text-center text-2xl font-bold">
-              <span className="text-brand-500">Herramientas</span> que uso
+              <span className="text-brand-500">Tools</span> I Use
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               {tools.map((t) => (

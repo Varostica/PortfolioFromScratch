@@ -23,7 +23,7 @@ export default function ArtworkCard({ artwork }: ArtworkCardProps) {
         {imgUrl && (
           <img
             src={imgUrl}
-            alt={artwork.title || 'Obra'}
+            alt={artwork.title || 'Artwork'}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-300
               group-hover:scale-[1.03]"
