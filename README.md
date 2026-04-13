@@ -145,6 +145,8 @@ It helped with the broader project architecture, including:
 - Drafting technical explanations and README content
 - Supporting test planning and implementation
 
+ChatGPT conversation: https://chatgpt.com/share/69dd4a46-136c-83e9-acf3-ff2def4816ae
+
 ### Exercise 2 Validation & Execution
 For the Fake Store API and detailed error-handling requirements introduced in Exercise 2, AI was explicitly used to accelerate boilerplate and solidify best practices. Specific support included:
 - **Service Design**: Reviewing the integration of the Fake Store API into the existing `apiClient.ts` to ensure the architecture matched the established Strapi patterns.
