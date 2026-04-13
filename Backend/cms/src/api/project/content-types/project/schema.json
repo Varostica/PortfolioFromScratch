@@ -1,0 +1,102 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "projects"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "fullDescription": {
+      "type": "blocks"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "stackSummary": {
+      "type": "string"
+    },
+    "githubUrl": {
+      "type": "string"
+    },
+    "liveUrl": {
+      "type": "string"
+    },
+    "referenceUrl": {
+      "type": "string"
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "ghLabel": {
+      "type": "string"
+    },
+    "demoLabel": {
+      "type": "string"
+    },
+    "referenceLabel": {
+      "type": "string"
+    },
+    "websiteLabel": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "projectStatus": {
+      "type": "enumeration",
+      "enum": [
+        "completed",
+        "in-progress",
+        "archived"
+      ]
+    },
+    "referencesPdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

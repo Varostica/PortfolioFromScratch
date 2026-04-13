@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "art_works",
+  "info": {
+    "singularName": "art-work",
+    "pluralName": "art-works",
+    "displayName": "artWorks"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "format": {
+      "type": "enumeration",
+      "enum": [
+        "vertical",
+        "horizontal",
+        "square"
+      ]
+    },
+    "year": {
+      "type": "integer"
+    },
+    "medium": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "sortOrder": {
+      "type": "integer"
+    }
+  }
+}

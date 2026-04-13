@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "about-page",
+    "description": "Write about yourself and the content you create"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string"
+    },
+    "profileImage": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bio": {
+      "type": "blocks"
+    },
+    "nicknameLine": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "shortLocation": {
+      "type": "string"
+    },
+    "quote": {
+      "type": "text"
+    },
+    "quoteAuthor": {
+      "type": "string"
+    },
+    "hobbiesTitle": {
+      "type": "string"
+    },
+    "hobbiesIntro": {
+      "type": "string"
+    }
+  }
+}

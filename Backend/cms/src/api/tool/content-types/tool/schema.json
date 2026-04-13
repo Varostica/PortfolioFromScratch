@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tools",
+  "info": {
+    "singularName": "tool",
+    "pluralName": "tools",
+    "displayName": "tools"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "iconName": {
+      "type": "string"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "ide",
+        "design",
+        "testing",
+        "devops",
+        "cloud",
+        "office",
+        "os",
+        "AI agent",
+        "other"
+      ]
+    }
+  }
+}
