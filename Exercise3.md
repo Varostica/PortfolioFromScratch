@@ -256,4 +256,4 @@ CI/CD
 
 PR → Lint/Test/Build → Staging → Smoke Tests → Production
 
-![diagram](image-1.png)
+![diagram](E3simpleDiagram.png)
