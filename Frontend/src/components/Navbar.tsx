@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 import { Home, User, FolderOpen, Image as ImageIcon, FileText, Mail } from 'lucide-react'
 
@@ -36,8 +37,8 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         {/* Logo / Brand */}
-        <Link to="/" className="text-xl font-bold text-brand-600 no-underline">
-          Varostica
+        <Link to="/" className="no-underline flex items-center">
+          <img src={logo} alt="Varostica" className="h-8 md:h-10 w-auto object-contain" />
         </Link>
 
         {/* Hamburger */}

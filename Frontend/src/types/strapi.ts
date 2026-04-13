@@ -137,6 +137,7 @@ export interface Project {
   demoLabel?: string
   referenceLabel?: string
   websiteLabel?: string
+  referencesPdf?: StrapiMedia | null
   featured?: boolean
   sortOrder?: number
   year?: number

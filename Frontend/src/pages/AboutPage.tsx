@@ -3,6 +3,7 @@ import type { AboutPage as AboutData, Skill, Tool, Hobby } from '../types/strapi
 import { getAboutPage, getSkills, getTools, getHobbies, toAbsoluteMediaUrl } from '../services'
 import BlockRenderer from '../components/BlockRenderer'
 import Spinner from '../components/Spinner'
+import aboutImg from '../assets/about.png'
 
 export default function AboutPage() {
   const [about, setAbout] = useState<AboutData | null>(null)
@@ -10,6 +11,17 @@ export default function AboutPage() {
   const [tools, setTools] = useState<Tool[]>([])
   const [hobbies, setHobbies] = useState<Hobby[]>([])
   const [loading, setLoading] = useState(true)
+
+  const highlightLastWord = (text: string) => {
+    const words = text.trim().split(' ')
+    if (words.length <= 1) return <span className="text-brand-500">{text}</span>
+    const last = words.pop()
+    return (
+      <>
+        {words.join(' ')} <span className="text-brand-500">{last}</span>
+      </>
+    )
+  }
 
   useEffect(() => {
     Promise.all([getAboutPage(), getSkills(), getTools(), getHobbies()])
@@ -26,9 +38,8 @@ export default function AboutPage() {
     )
   }
 
-  const profileImg = about?.profileImage?.[0]
-    ? toAbsoluteMediaUrl(about.profileImage[0].url)
-    : ''
+  // We are using the static asset rather than CMS image
+  const profileImg = aboutImg
 
   return (
     <section className="min-h-screen pt-36 pb-12">
@@ -37,10 +48,9 @@ export default function AboutPage() {
         <div className="flex flex-col items-center gap-10 md:flex-row">
           <div className="flex-1 animate-fade-in">
             <h1 className="mb-6 text-3xl font-bold">
-              {about?.sectionTitle ?? (
+              {about?.sectionTitle ? highlightLastWord(about.sectionTitle) : (
                 <>
-                  Who is{' '}
-                  <span className="text-brand-500">Varóstica</span>?
+                  Who is <span className="text-brand-500">Varóstica?</span>
                 </>
               )}
             </h1>
@@ -74,8 +84,8 @@ export default function AboutPage() {
             <div className="flex-shrink-0 animate-fade-in">
               <img
                 src={profileImg}
-                alt="About"
-                className="max-h-96 rounded-2xl shadow-lg"
+                alt="About Varóstica"
+                className="w-80 md:w-[450px] lg:w-[450px] h-auto object-contain"
               />
             </div>
           )}

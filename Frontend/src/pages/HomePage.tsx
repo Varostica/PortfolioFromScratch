@@ -7,10 +7,25 @@ import BlockRenderer from '../components/BlockRenderer'
 import Spinner from '../components/Spinner'
 import { ArrowRight } from 'lucide-react'
 import heroFallback from '../assets/Varostica.gif'
+import homeBg from '../assets/home-bg.jpg'
+import avatar from '../assets/avatar.svg'
+import valentina from '../assets/valentina.png'
 
 export default function HomePage() {
   const [data, setData] = useState<Homepage | null>(null)
   const [loading, setLoading] = useState(true)
+  const [isFlipped, setIsFlipped] = useState(false)
+
+  const highlightLastWord = (text: string) => {
+    const words = text.trim().split(' ')
+    if (words.length <= 1) return <span className="text-brand-500">{text}</span>
+    const last = words.pop()
+    return (
+      <>
+        {words.join(' ')} <span className="text-brand-500">{last}</span>
+      </>
+    )
+  }
 
   useEffect(() => {
     getHomepage()
@@ -34,8 +49,12 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative min-h-screen pt-24 pb-12">
-        <div className="mx-auto flex max-w-7xl flex-col-reverse items-center gap-8 px-6 md:flex-row">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
+        <div
+          className="absolute inset-0 z-0 opacity-25 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${homeBg})` }}
+        />
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col-reverse items-center gap-8 px-6 md:flex-row">
           {/* Left */}
           <div className="flex-1 animate-fade-in text-left">
             {data?.eyebrow && (
@@ -112,22 +131,45 @@ export default function HomePage() {
       </section>
 
       {/* ── Intro / About ── */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            {data?.introTitle ?? (
-              <>
-                LET ME <span className="text-brand-500">INTRODUCE MYSELF</span>
-              </>
-            )}
-          </h2>
+      <section className="py-20 md:py-24" id="about">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-12 px-6 md:flex-row md:items-center">
+          {/* Avatar Left */}
+          <div 
+            className="flex-shrink-0 group perspective-1000 h-[300px] w-[300px] md:h-[400px] md:w-[400px] cursor-pointer"
+            onClick={() => setIsFlipped((prev) => !prev)}
+          >
+            <div className={`relative h-full w-full transition-transform duration-300 [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
+              {/* Front side (avatar) */}
+              <img
+                src={avatar}
+                alt="Avatar Front"
+                className="absolute inset-0 h-full w-full object-contain [backface-visibility:hidden] drop-shadow-xl"
+              />
+              {/* Back side (valentina) */}
+              <img
+                src={valentina}
+                alt="Valentina Back"
+                className="absolute inset-0 h-full w-full object-cover [backface-visibility:hidden] [transform:rotateY(180deg)] drop-shadow-xl rounded-3xl"
+              />
+            </div>
+          </div>
 
-          {data?.introText && data.introText.length > 0 && (
-            <BlockRenderer
-              blocks={data.introText}
-              className="mx-auto mt-6 max-w-2xl text-lg text-text-muted"
-            />
-          )}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-3xl font-bold md:text-4xl">
+              {data?.introTitle ? highlightLastWord(data.introTitle) : (
+                <>
+                  LET ME <span className="text-brand-500">INTRODUCE MYSELF</span>
+                </>
+              )}
+            </h2>
+
+            {data?.introText && data.introText.length > 0 && (
+              <BlockRenderer
+                blocks={data.introText}
+                className="mt-6 mx-auto md:mx-0 text-lg text-text-muted max-w-2xl"
+              />
+            )}
+          </div>
         </div>
       </section>
 
@@ -136,7 +178,7 @@ export default function HomePage() {
         <section className="bg-brand-50/50 py-20">
           <div className="mx-auto max-w-7xl px-6 text-center">
             <h2 className="text-3xl font-bold md:text-4xl">
-              {data.websiteOverviewTitle ?? (
+              {data.websiteOverviewTitle ? highlightLastWord(data.websiteOverviewTitle) : (
                 <>
                   What's on this <span className="text-brand-500">WEBSITE</span>?
                 </>

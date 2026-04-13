@@ -746,6 +746,9 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     referenceLabel: Schema.Attribute.String;
+    referencesPdf: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     referenceUrl: Schema.Attribute.String;
     shortDescription: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'title'>;
@@ -919,7 +922,17 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Enumeration<
-      ['ide', 'design', 'testing', 'devops', 'cloud', 'office', 'os', 'other']
+      [
+        'ide',
+        'design',
+        'testing',
+        'devops',
+        'cloud',
+        'office',
+        'os',
+        'AI agent',
+        'other',
+      ]
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

@@ -20,7 +20,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     { url: project.githubUrl, label: project.ghLabel ?? 'GitHub', icon: FaGithub },
     { url: project.liveUrl, label: project.demoLabel ?? 'Demo', icon: PlayCircle },
     { url: project.websiteUrl, label: project.websiteLabel ?? 'Website', icon: Globe },
-    { url: project.referenceUrl, label: project.referenceLabel ?? 'References', icon: ExternalLink },
+    { 
+      url: project.referencesPdf ? toAbsoluteMediaUrl(project.referencesPdf.url) : undefined, 
+      label: project.referenceLabel ?? 'References', 
+      icon: ExternalLink 
+    },
   ].filter((b) => !!b.url)
 
   return (
