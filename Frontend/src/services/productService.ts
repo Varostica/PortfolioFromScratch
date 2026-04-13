@@ -1,16 +1,9 @@
+import type { Product } from '../types/product'
 import { fetchJson } from './apiClient'
 
-const FAKESTORE_API_URL = import.meta.env.VITE_FAKESTORE_API_URL
+const FAKESTORE_BASE_URL = import.meta.env.VITE_FAKESTORE_API_URL
 
-export interface Product {
-  id: number
-  title: string
-  price: number
-  description: string
-  category: string
-  image: string
-}
-
-export async function getProducts() {
-  return fetchJson<Product[]>(`${FAKESTORE_API_URL}/products`)
+/** Fetch all products from the Fake Store API. */
+export async function getProducts(): Promise<Product[]> {
+  return fetchJson<Product[]>(`${FAKESTORE_BASE_URL}/products`)
 }

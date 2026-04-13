@@ -1,5 +1,13 @@
 export type ApiErrorKind = 'client' | 'server' | 'network' | 'unknown'
 
+/** User-facing messages keyed by error kind. */
+const USER_MESSAGES: Record<ApiErrorKind, string> = {
+  client:  'The request could not be completed.',
+  server:  'The server is having problems. Please try again later.',
+  network: 'Network error. Please check your connection.',
+  unknown: 'An unexpected error occurred. Please try again.',
+}
+
 export class ApiError extends Error {
   kind: ApiErrorKind
   status?: number
@@ -13,6 +21,11 @@ export class ApiError extends Error {
     this.name = 'ApiError'
     this.kind = kind
     this.status = status
+  }
+
+  /** Return the user-facing message for this error kind. */
+  getUserMessage(): string {
+    return USER_MESSAGES[this.kind]
   }
 }
 

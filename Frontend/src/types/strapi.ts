@@ -98,6 +98,14 @@ export interface AboutPage {
   hobbiesIntro?: string
 }
 
+export interface ProductsPage {
+  id: number
+  documentId?: string
+  pageTitle: string
+  intro?: string
+}
+
+
 export interface ResumePage {
   id: number
   documentId?: string
