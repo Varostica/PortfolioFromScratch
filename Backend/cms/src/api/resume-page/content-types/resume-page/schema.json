@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "resume_pages",
+  "info": {
+    "singularName": "resume-page",
+    "pluralName": "resume-pages",
+    "displayName": "resume-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string"
+    },
+    "resumeFile": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "downloadButtonText": {
+      "type": "string"
+    },
+    "previewEnabled": {
+      "type": "boolean"
+    },
+    "shortResumeIntro": {
+      "type": "text"
+    }
+  }
+}

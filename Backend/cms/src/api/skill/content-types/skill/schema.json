@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "singularName": "skill",
+    "pluralName": "skills",
+    "displayName": "skills"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "frontend",
+        "backend",
+        "language",
+        "database",
+        "cloud",
+        "other"
+      ]
+    },
+    "iconName": {
+      "type": "string"
+    },
+    "proficiency": {
+      "type": "enumeration",
+      "enum": [
+        "learning",
+        "comfortable",
+        "strong"
+      ]
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "featured": {
+      "type": "boolean"
+    }
+  }
+}

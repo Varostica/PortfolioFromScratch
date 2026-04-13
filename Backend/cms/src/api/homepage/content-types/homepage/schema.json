@@ -4,7 +4,7 @@
   "info": {
     "singularName": "homepage",
     "pluralName": "homepages",
-    "displayName": "homepage"
+    "displayName": "home-page"
   },
   "options": {
     "draftAndPublish": true
@@ -17,20 +17,45 @@
     "heroSubtitle": {
       "type": "text"
     },
-    "aboutTitle": {
+    "eyebrow": {
       "type": "string"
     },
-    "aboutText": {
-      "type": "text"
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "contactEmail": {
-      "type": "email"
-    },
-    "productsPageTitle": {
+    "heroCtaPrimaryText": {
       "type": "string"
     },
-    "productsPageDescription": {
-      "type": "text"
+    "heroCtaPrimaryUrl": {
+      "type": "string"
+    },
+    "heroCtaSecondaryText": {
+      "type": "string"
+    },
+    "heroCtaSecondaryUrl": {
+      "type": "string"
+    },
+    "introTitle": {
+      "type": "string"
+    },
+    "introText": {
+      "type": "blocks"
+    },
+    "websiteOverviewTitle": {
+      "type": "string"
+    },
+    "websiteOverviewText": {
+      "type": "blocks"
+    },
+    "showSocialLinks": {
+      "type": "boolean"
     }
   }
 }

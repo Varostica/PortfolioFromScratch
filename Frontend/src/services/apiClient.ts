@@ -1,25 +1,67 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:1337';
+export type ApiErrorKind = 'client' | 'server' | 'network' | 'unknown'
 
-/**
- * Generic fetch wrapper for Strapi API calls.
- * Centralises headers, base URL, and error handling.
- */
-async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
-  const url = `${API_BASE_URL}/api${endpoint}`;
+export class ApiError extends Error {
+  kind: ApiErrorKind
+  status?: number
 
-  const response = await fetch(url, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options?.headers,
-    },
-    ...options,
-  });
-
-  if (!response.ok) {
-    throw new Error(`API error ${response.status}: ${response.statusText}`);
+  constructor(
+    message: string,
+    kind: ApiErrorKind,
+    status?: number
+  ) {
+    super(message)
+    this.name = 'ApiError'
+    this.kind = kind
+    this.status = status
   }
-
-  return response.json() as Promise<T>;
 }
 
-export default fetchAPI;
+export async function fetchJson<T>(
+  url: string,
+  init?: RequestInit
+): Promise<T> {
+  try {
+    const response = await fetch(url, {
+      ...init,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(init?.headers ?? {}),
+      },
+    })
+
+    if (!response.ok) {
+      if (response.status >= 400 && response.status < 500) {
+        throw new ApiError(
+          `Client error while requesting ${url}`,
+          'client',
+          response.status
+        )
+      }
+
+      if (response.status >= 500) {
+        throw new ApiError(
+          `Server error while requesting ${url}`,
+          'server',
+          response.status
+        )
+      }
+
+      throw new ApiError(
+        `Unexpected HTTP error while requesting ${url}`,
+        'unknown',
+        response.status
+      )
+    }
+
+    return response.json() as Promise<T>
+  } catch (error) {
+    if (error instanceof ApiError) {
+      throw error
+    }
+
+    throw new ApiError(
+      `Network error while requesting ${url}`,
+      'network'
+    )
+  }
+}

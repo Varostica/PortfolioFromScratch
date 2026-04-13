@@ -1,13 +1,11 @@
-import fetchAPI from './apiClient';
+import type { Homepage, StrapiSingleResponse } from '../types/strapi'
+import { CMS_ENDPOINTS, buildCmsUrl, buildQuery, fetchJson } from './cmsBase'
 
-// TODO: replace with shared types from src/types/
-interface HomepageResponse {
-  data: {
-    id: number;
-    attributes: Record<string, unknown>;
-  };
-}
+export async function getHomepage(): Promise<Homepage> {
+  const query = buildQuery({ populateAll: true })
+  const response = await fetchJson<StrapiSingleResponse<Homepage>>(
+    buildCmsUrl(CMS_ENDPOINTS.homepage, query)
+  )
 
-export async function getHomepage(): Promise<HomepageResponse> {
-  return fetchAPI<HomepageResponse>('/homepage?populate=*');
+  return response.data
 }

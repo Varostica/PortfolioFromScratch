@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hobbies",
+  "info": {
+    "singularName": "hobby",
+    "pluralName": "hobbies",
+    "displayName": "hobbies"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "iconName": {
+      "type": "string"
+    },
+    "sortOrder": {
+      "type": "integer"
+    }
+  }
+}

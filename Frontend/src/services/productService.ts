@@ -1,23 +1,16 @@
-import fetchAPI from './apiClient';
+import { fetchJson } from './apiClient'
 
-// TODO: replace with shared types from src/types/
-interface Product {
-  id: number;
-  attributes: Record<string, unknown>;
+const FAKESTORE_API_URL = import.meta.env.VITE_FAKESTORE_API_URL
+
+export interface Product {
+  id: number
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
 }
 
-interface ProductListResponse {
-  data: Product[];
-}
-
-interface ProductResponse {
-  data: Product;
-}
-
-export async function getProducts(): Promise<ProductListResponse> {
-  return fetchAPI<ProductListResponse>('/products?populate=*');
-}
-
-export async function getProduct(id: number): Promise<ProductResponse> {
-  return fetchAPI<ProductResponse>(`/products/${id}?populate=*`);
+export async function getProducts() {
+  return fetchJson<Product[]>(`${FAKESTORE_API_URL}/products`)
 }
