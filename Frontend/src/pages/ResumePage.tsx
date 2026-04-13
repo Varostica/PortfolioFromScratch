@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { ResumePage as ResumeData } from '../types/strapi'
 import { getResumePage, toAbsoluteMediaUrl } from '../services'
 import Spinner from '../components/Spinner'
+import { Download } from 'lucide-react'
 
 export default function ResumePage() {
   const [data, setData] = useState<ResumeData | null>(null)
@@ -22,8 +23,8 @@ export default function ResumePage() {
     )
   }
 
-  const fileUrl = data?.resumeFile
-    ? toAbsoluteMediaUrl(data.resumeFile.url)
+  const fileUrl = data?.resumeFile?.[0]
+    ? toAbsoluteMediaUrl(data.resumeFile[0].url)
     : ''
 
   return (
@@ -48,7 +49,7 @@ export default function ResumePage() {
                 font-semibold text-white no-underline shadow-lg shadow-brand-500/30
                 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
             >
-              ⬇ {data?.downloadButtonText ?? 'Download Resume'}
+              <Download className="h-4 w-4" /> {data?.downloadButtonText ?? 'Download Resume'}
             </a>
           </div>
         )}
@@ -75,7 +76,7 @@ export default function ResumePage() {
                 font-semibold text-white no-underline shadow-lg shadow-brand-500/30
                 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
             >
-              ⬇ {data?.downloadButtonText ?? 'Download Resume'}
+              <Download className="h-4 w-4" /> {data?.downloadButtonText ?? 'Download Resume'}
             </a>
           </div>
         )}

@@ -23,7 +23,7 @@ export default function Footer() {
         <p className="text-sm">Copyright &copy; {footer.year}</p>
         <SocialLinks
           filter="footer"
-          iconClassName="bg-neutral-800 text-white hover:text-brand-400 hover:shadow-brand-500/30"
+          iconClassName="bg-neutral-800 text-primary hover:text-brand-400 hover:shadow-brand-500/30"
         />
       </div>
     </footer>

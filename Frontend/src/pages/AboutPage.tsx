@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
-import type { AboutPage as AboutData, Skill, Tool } from '../types/strapi'
-import { getAboutPage, getSkills, getTools, toAbsoluteMediaUrl } from '../services'
+import type { AboutPage as AboutData, Skill, Tool, Hobby } from '../types/strapi'
+import { getAboutPage, getSkills, getTools, getHobbies, toAbsoluteMediaUrl } from '../services'
+import BlockRenderer from '../components/BlockRenderer'
 import Spinner from '../components/Spinner'
 
 export default function AboutPage() {
   const [about, setAbout] = useState<AboutData | null>(null)
   const [skills, setSkills] = useState<Skill[]>([])
   const [tools, setTools] = useState<Tool[]>([])
+  const [hobbies, setHobbies] = useState<Hobby[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    Promise.all([getAboutPage(), getSkills(), getTools()])
-      .then(([a, s, t]) => { setAbout(a); setSkills(s); setTools(t) })
+    Promise.all([getAboutPage(), getSkills(), getTools(), getHobbies()])
+      .then(([a, s, t, h]) => { setAbout(a); setSkills(s); setTools(t); setHobbies(h) })
       .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
@@ -24,8 +26,8 @@ export default function AboutPage() {
     )
   }
 
-  const profileImg = about?.profileImage
-    ? toAbsoluteMediaUrl(about.profileImage.url)
+  const profileImg = about?.profileImage?.[0]
+    ? toAbsoluteMediaUrl(about.profileImage[0].url)
     : ''
 
   return (
@@ -43,10 +45,11 @@ export default function AboutPage() {
               )}
             </h1>
 
-            {about?.bio && (
-              <p className="text-lg leading-relaxed text-text-muted whitespace-pre-line">
-                {about.bio}
-              </p>
+            {about?.bio && about.bio.length > 0 && (
+              <BlockRenderer
+                blocks={about.bio}
+                className="text-lg text-text-muted"
+              />
             )}
 
             {about?.nicknameLine && (
@@ -116,6 +119,30 @@ export default function AboutPage() {
                 >
                   <span className="text-sm font-semibold text-text">{t.name}</span>
                   <span className="mt-1 text-xs text-text-muted capitalize">{t.category}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── Hobbies ── */}
+        {hobbies.length > 0 && (
+          <div className="mt-16 animate-fade-in">
+            <h2 className="mb-8 text-center text-2xl font-bold">
+              My <span className="text-brand-500">Hobbies</span>
+            </h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              {hobbies.map((h) => (
+                <div
+                  key={h.id}
+                  className="flex flex-col items-center justify-center rounded-lg border border-brand-200
+                    px-5 py-4 shadow-sm transition-all duration-300
+                    hover:scale-105 hover:border-brand-400 hover:shadow-md"
+                >
+                  <span className="text-sm font-semibold text-text">{h.name}</span>
+                  {h.description && (
+                    <span className="mt-1 text-xs text-text-muted">{h.description}</span>
+                  )}
                 </div>
               ))}
             </div>

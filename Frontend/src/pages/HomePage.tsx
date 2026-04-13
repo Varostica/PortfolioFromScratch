@@ -3,7 +3,9 @@ import Typewriter from 'typewriter-effect'
 import type { Homepage } from '../types/strapi'
 import { getHomepage, toAbsoluteMediaUrl } from '../services'
 import SocialLinks from '../components/SocialLinks'
+import BlockRenderer from '../components/BlockRenderer'
 import Spinner from '../components/Spinner'
+import { ArrowRight } from 'lucide-react'
 import heroFallback from '../assets/Varostica.gif'
 
 export default function HomePage() {
@@ -37,7 +39,7 @@ export default function HomePage() {
           {/* Left */}
           <div className="flex-1 animate-fade-in text-left">
             {data?.eyebrow && (
-              <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-500">
+              <p className="mb-2 text-3xl font-bold md:text-4xl text-brand-500">
                 {data.eyebrow}
               </p>
             )}
@@ -47,15 +49,11 @@ export default function HomePage() {
               <span className="inline-block animate-wave origin-[70%_70%]">👋🏻</span>
             </h1>
 
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl">
+            <h2 className="mt-2 text-sm font-semibold uppercase tracking-widest text-brand-800">
               {data?.heroSubtitle ? (
-                <>
-                  I'm <span className="text-brand-500">{data.heroSubtitle}</span>
-                </>
+                <>{data.heroSubtitle}</>
               ) : (
-                <>
-                  I'm <span className="text-brand-500">VALENTINA ARÓSTICA</span>
-                </>
+                <>Software Developer</>
               )}
             </h2>
 
@@ -82,10 +80,11 @@ export default function HomePage() {
                 {data?.heroCtaPrimaryUrl && (
                   <a
                     href={data.heroCtaPrimaryUrl}
-                    className="rounded-xl bg-brand-500 px-6 py-3 font-semibold text-white no-underline
+                    className="flex items-center gap-2 rounded-xl bg-brand-500 px-6 py-3 font-semibold text-white no-underline
                       shadow-lg shadow-brand-500/30 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
                   >
                     {data.heroCtaPrimaryText}
+                    <ArrowRight className="h-4 w-4" />
                   </a>
                 )}
                 {data?.heroCtaSecondaryUrl && (
@@ -123,10 +122,11 @@ export default function HomePage() {
             )}
           </h2>
 
-          {data?.introText && (
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-              {data.introText}
-            </p>
+          {data?.introText && data.introText.length > 0 && (
+            <BlockRenderer
+              blocks={data.introText}
+              className="mx-auto mt-6 max-w-2xl text-lg text-text-muted"
+            />
           )}
         </div>
       </section>
@@ -142,10 +142,11 @@ export default function HomePage() {
                 </>
               )}
             </h2>
-            {data.websiteOverviewText && (
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-                {data.websiteOverviewText}
-              </p>
+            {data.websiteOverviewText && data.websiteOverviewText.length > 0 && (
+              <BlockRenderer
+                blocks={data.websiteOverviewText}
+                className="mx-auto mt-6 max-w-2xl text-lg text-text-muted"
+              />
             )}
           </div>
         </section>

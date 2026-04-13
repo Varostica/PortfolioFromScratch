@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { ContactPage as ContactData } from '../types/strapi'
 import { getContactPage } from '../services'
 import Spinner from '../components/Spinner'
+import { Send } from 'lucide-react'
 
 export default function ContactPage() {
   const [data, setData] = useState<ContactData | null>(null)
@@ -77,11 +78,12 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="rounded-xl bg-brand-500 px-8 py-3 font-semibold text-white
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-8 py-3 font-semibold text-white
                   shadow-lg shadow-brand-500/30 transition-all
                   hover:-translate-y-0.5 hover:bg-brand-600"
               >
                 Send
+                <Send className="h-4 w-4" />
               </button>
             </form>
           )}

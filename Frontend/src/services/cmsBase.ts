@@ -7,16 +7,17 @@ if (!STRAPI_API_URL) {
 }
 
 export const CMS_ENDPOINTS = {
-  siteSettings: '/site-settings',
+  siteSettings: '/site-setting',
   homepage: '/homepage',
-  aboutPage: '/about-page',
+  aboutPage: '/about',
   resumePage: '/resume-page',
   contactPage: '/contact-page',
   projects: '/projects',
   socialLinks: '/social-links',
   skills: '/skills',
   tools: '/tools',
-  artworks: '/artworks',
+  artworks: '/art-works',
+  hobbies: '/hobbies',
 } as const
 
 export function buildCmsUrl(path: string, query?: string) {

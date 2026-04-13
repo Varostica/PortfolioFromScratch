@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+import { Home, User, FolderOpen, Image as ImageIcon, FileText, Mail } from 'lucide-react'
+
 const NAV_ITEMS = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/artgallery', label: 'Art' },
-  { to: '/resume', label: 'Resume' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/', label: 'Home', icon: Home },
+  { to: '/about', label: 'About', icon: User },
+  { to: '/projects', label: 'Projects', icon: FolderOpen },
+  { to: '/artgallery', label: 'Art', icon: ImageIcon },
+  { to: '/resume', label: 'Resume', icon: FileText },
+  { to: '/contact', label: 'Contact', icon: Mail },
 ]
 
 export default function Navbar() {
@@ -67,18 +69,19 @@ export default function Navbar() {
               : 'hidden'
             }`}
         >
-          {NAV_ITEMS.map(({ to, label }) => {
+          {NAV_ITEMS.map(({ to, label, icon: Icon }) => {
             const active = pathname === to
             return (
               <li key={to}>
                 <Link
                   to={to}
-                  className={`relative block px-4 py-2 text-sm font-medium no-underline transition-colors duration-200
+                  className={`relative flex items-center gap-2 px-4 py-2 text-sm font-medium no-underline transition-colors duration-200
                     ${open ? 'text-white' : 'text-text'}
                     ${active ? 'text-brand-500' : ''}
                     hover:text-brand-500
                     group`}
                 >
+                  <Icon className="h-4 w-4" />
                   {label}
                   <span
                     className={`absolute bottom-0 left-4 h-[3px] rounded-full bg-brand-500 transition-all duration-300

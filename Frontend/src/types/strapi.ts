@@ -9,6 +9,26 @@ export interface StrapiMedia {
   height?: number
 }
 
+export interface StrapiBlockChild {
+  type: 'text' | 'link'
+  text?: string
+  bold?: boolean
+  italic?: boolean
+  underline?: boolean
+  strikethrough?: boolean
+  code?: boolean
+  url?: string
+  children?: StrapiBlockChild[]
+}
+
+export interface StrapiBlock {
+  type: 'paragraph' | 'heading' | 'list' | 'list-item' | 'quote' | 'code' | 'image'
+  level?: number
+  format?: 'ordered' | 'unordered'
+  children?: StrapiBlockChild[]
+  image?: StrapiMedia
+}
+
 export interface StrapiSingleResponse<T> {
   data: T
   meta?: Record<string, never>
@@ -57,9 +77,9 @@ export interface Homepage {
   heroCtaSecondaryText?: string
   heroCtaSecondaryUrl?: string
   introTitle?: string
-  introText?: string
+  introText?: StrapiBlock[]
   websiteOverviewTitle?: string
-  websiteOverviewText?: string
+  websiteOverviewText?: StrapiBlock[]
   showSocialLinks?: boolean
 }
 
@@ -67,8 +87,8 @@ export interface AboutPage {
   id: number
   documentId?: string
   sectionTitle: string
-  profileImage?: StrapiMedia | null
-  bio: string
+  profileImage?: StrapiMedia[]
+  bio: StrapiBlock[]
   nicknameLine?: string
   jobTitle?: string
   shortLocation?: string
@@ -82,7 +102,7 @@ export interface ResumePage {
   id: number
   documentId?: string
   sectionTitle: string
-  resumeFile?: StrapiMedia | null
+  resumeFile?: StrapiMedia[]
   downloadButtonText?: string
   previewEnabled?: boolean
   shortResumeIntro?: string
@@ -105,7 +125,7 @@ export interface Project {
   title: string
   slug: string
   shortDescription: string
-  fullDescription?: string
+  fullDescription?: StrapiBlock[]
   coverImage?: StrapiMedia | null
   gallery?: StrapiMedia[]
   stackSummary?: string
@@ -180,5 +200,14 @@ export interface Artwork {
   year?: number
   medium?: string
   featured?: boolean
+  sortOrder?: number
+}
+
+export interface Hobby {
+  id: number
+  documentId?: string
+  name: string
+  description?: string
+  iconName?: string
   sortOrder?: number
 }
