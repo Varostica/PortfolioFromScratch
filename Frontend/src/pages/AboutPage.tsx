@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { AboutPage as AboutData, Skill, Tool, Hobby } from '../types/strapi'
-import { getAboutPage, getSkills, getTools, getHobbies, toAbsoluteMediaUrl } from '../services'
+import { getAboutPage, getSkills, getTools, getHobbies } from '../services'
 import BlockRenderer from '../components/BlockRenderer'
 import Spinner from '../components/Spinner'
 import aboutImg from '../assets/about.png'
