@@ -6,6 +6,7 @@ import SocialLinks from '../components/SocialLinks'
 import BlockRenderer from '../components/BlockRenderer'
 import Spinner from '../components/Spinner'
 import { ArrowRight } from 'lucide-react'
+import CmsLink from '../components/CmsLink'
 import heroFallback from '../assets/Varostica.gif'
 import homeBg from '../assets/home-bg.jpg'
 import avatar from '../assets/avatar.svg'
@@ -97,23 +98,23 @@ export default function HomePage() {
             {(data?.heroCtaPrimaryText || data?.heroCtaSecondaryText) && (
               <div className="mt-8 flex flex-wrap gap-4">
                 {data?.heroCtaPrimaryUrl && (
-                  <a
+                  <CmsLink
                     href={data.heroCtaPrimaryUrl}
                     className="flex items-center gap-2 rounded-xl bg-brand-500 px-6 py-3 font-semibold text-white no-underline
                       shadow-lg shadow-brand-500/30 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
                   >
                     {data.heroCtaPrimaryText}
                     <ArrowRight className="h-4 w-4" />
-                  </a>
+                  </CmsLink>
                 )}
                 {data?.heroCtaSecondaryUrl && (
-                  <a
+                  <CmsLink
                     href={data.heroCtaSecondaryUrl}
                     className="rounded-xl border-2 border-brand-500 px-6 py-3 font-semibold text-brand-600 no-underline
                       transition-all hover:-translate-y-0.5 hover:bg-brand-50"
                   >
                     {data.heroCtaSecondaryText}
-                  </a>
+                  </CmsLink>
                 )}
               </div>
             )}
