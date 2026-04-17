@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { ResumePage as ResumeData } from '../types/strapi'
-import { getResumePage, toAbsoluteMediaUrl } from '../services'
+import { getResumePage, toPublicMediaUrl } from '../services'
 import Spinner from '../components/Spinner'
 import { Download } from 'lucide-react'
 
@@ -24,7 +24,7 @@ export default function ResumePage() {
   }
 
   const fileUrl = data?.resumeFile?.[0]
-    ? toAbsoluteMediaUrl(data.resumeFile[0].url)
+    ? toPublicMediaUrl(data.resumeFile[0].url)
     : ''
 
   return (
