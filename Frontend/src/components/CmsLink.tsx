@@ -7,25 +7,31 @@ interface CmsLinkProps {
   children: React.ReactNode;
 }
 
+/**
+ * Renders a React Router <Link> for internal paths (starting with "/")
+ * and a plain <a> for external URLs (http:// or https://).
+ * Use this for any CMS-driven URLs to prevent full-page reloads on SPA routes.
+ */
 export default function CmsLink({ href, className, children }: CmsLinkProps) {
-  const isInternal = href.startsWith('/');
+  // Trim any accidental whitespace from CMS input
+  const url = href.trim();
 
-  if (isInternal) {
+  if (url.startsWith('/')) {
+    // Internal SPA route — use React Router for client-side navigation
     return (
-      <Link to={href} className={className}>
+      <Link to={url} className={className}>
         {children}
       </Link>
     );
   }
 
-  const isExternal = href.startsWith('http://') || href.startsWith('https://');
-
+  // External URL — use a normal anchor, open in new tab
   return (
     <a
-      href={href}
+      href={url}
       className={className}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {children}
     </a>
