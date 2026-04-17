@@ -52,4 +52,20 @@ export function toAbsoluteMediaUrl(url?: string | null) {
   return `${getStrapiOrigin()}${url}`
 }
 
+/**
+ * Like toAbsoluteMediaUrl, but also rewrites Cloudinary private-delivery URLs
+ * (res.cloudinary.com/.../private/...) to public upload URLs so that PDFs and
+ * other file assets stored as 'private' in Cloudinary can be accessed without
+ * a signed token. This fixes HTTP 401 errors when previewing/downloading CVs.
+ */
+export function toPublicMediaUrl(url?: string | null): string {
+  const absolute = toAbsoluteMediaUrl(url)
+  if (!absolute) return ''
+  // Cloudinary private assets: replace /private/ with /upload/ in the path
+  return absolute.replace(
+    /(res\.cloudinary\.com\/[^/]+\/(?:image|video|raw)\/)(private)(\/)/, 
+    '$1upload$3'
+  )
+}
+
 export { fetchJson }
