@@ -21,7 +21,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     { url: project.liveUrl, label: project.demoLabel ?? 'Demo', icon: PlayCircle },
     { url: project.websiteUrl, label: project.websiteLabel ?? 'Website', icon: Globe },
     { 
-      url: project.referencesPdf ? toAbsoluteMediaUrl(project.referencesPdf.url) : undefined, 
+      url: project.referencesPdf ? toAbsoluteMediaUrl(project.referencesPdf.url) : project.referenceUrl, 
       label: project.referenceLabel ?? 'References', 
       icon: ExternalLink 
     },
