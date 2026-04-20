@@ -36,11 +36,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         hover:scale-[1.02] hover:shadow-[0_4px_4px_5px_rgba(173,110,67,0.25)]
         ${isExpanded ? 'scale-[1.02] shadow-[0_4px_4px_5px_rgba(173,110,67,0.25)]' : ''}`}
     >
+      {project.year && (
+        <div className="pl-5 pt-5 pb-1 text-xs font-bold tracking-wider text-brand-600/80">
+          {project.year}
+        </div>
+      )}
       {cover && (
         <img
           src={cover}
           alt={`${project.title} cover`}
-          className="h-60 w-full object-cover p-4 rounded-2xl"
+          className={`h-60 w-full object-cover px-4 pb-4 ${project.year ? 'pt-0' : 'pt-4'} rounded-2xl`}
           loading="lazy"
         />
       )}
