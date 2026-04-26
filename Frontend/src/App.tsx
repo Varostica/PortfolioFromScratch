@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ProjectsPage from './pages/ProjectsPage'
 import ArtGalleryPage from './pages/ArtGalleryPage'
+import CredentialsPage from './pages/CredentialsPage'
 import ResumePage from './pages/ResumePage'
 import ContactPage from './pages/ContactPage'
 
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/artgallery" element={<ArtGalleryPage />} />
+          <Route path="/credentials" element={<CredentialsPage />} />
           <Route path="/resume" element={<ResumePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" />} />

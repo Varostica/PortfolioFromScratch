@@ -18,6 +18,7 @@ export const CMS_ENDPOINTS = {
   tools: '/tools',
   artworks: '/art-works',
   hobbies: '/hobbies',
+  credentials: '/credentials',
 } as const
 
 export function buildCmsUrl(path: string, query?: string) {
