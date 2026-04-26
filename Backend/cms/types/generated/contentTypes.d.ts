@@ -655,7 +655,7 @@ export interface ApiCredentialCredential extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     featured: Schema.Attribute.Boolean;
-    format: Schema.Attribute.Enumeration<['vertical, horizontal, square']>;
+    format: Schema.Attribute.Enumeration<['vertical', 'horizontal', 'square']>;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
