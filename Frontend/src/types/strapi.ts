@@ -205,6 +205,22 @@ export interface Artwork {
   sortOrder?: number
 }
 
+export interface Credential {
+  id: string
+  documentId?: string
+  title: string
+  subtitle?: string
+  image?: StrapiMedia | null
+  format?: 'vertical' | 'horizontal' | 'square'
+  year?: number
+  month?: string 
+  medium?: string
+  featured?: boolean
+  sortOrder?: number
+  showCredentialUrl?: string
+  showCredentialLabel?: string
+}
+
 export interface Hobby {
   id: number
   documentId?: string
