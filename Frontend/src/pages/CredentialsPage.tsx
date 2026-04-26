@@ -78,7 +78,7 @@ export default function CredentialsPage() {
           My <span className="text-brand-500">Hall of Fame</span>
         </h1>
         <p className="mb-10 text-center text-text-muted">
-          Here you will find my degrees, diplomas, certificates, and recognitions.
+          Here you will find my degrees, credentials, certificates, and recognitions.
         </p>
 
         {credentials.length === 0 ? (
