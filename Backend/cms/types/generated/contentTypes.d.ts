@@ -640,6 +640,44 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCredentialCredential extends Struct.CollectionTypeSchema {
+  collectionName: 'credentials';
+  info: {
+    displayName: 'Credential';
+    pluralName: 'credentials';
+    singularName: 'credential';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featured: Schema.Attribute.Boolean;
+    format: Schema.Attribute.Enumeration<['vertical, horizontal, square']>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::credential.credential'
+    > &
+      Schema.Attribute.Private;
+    medium: Schema.Attribute.String;
+    month: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    showCredentialLabel: Schema.Attribute.String;
+    showCredentialUrl: Schema.Attribute.String;
+    sortOrder: Schema.Attribute.Integer;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiHobbyHobby extends Struct.CollectionTypeSchema {
   collectionName: 'hobbies';
   info: {
@@ -1497,6 +1535,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::credential.credential': ApiCredentialCredential;
       'api::hobby.hobby': ApiHobbyHobby;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::product-page.product-page': ApiProductPageProductPage;

@@ -206,7 +206,7 @@ export interface Artwork {
 }
 
 export interface Credential {
-  id: string
+  id: number
   documentId?: string
   title: string
   subtitle?: string
